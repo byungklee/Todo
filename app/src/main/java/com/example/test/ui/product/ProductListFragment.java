@@ -14,18 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test.R;
 
-public class ProductFragment extends Fragment {
-    private ProductViewModel productViewModel;
-    private ProductRecyclerViewAdapter adapter;
+public class ProductListFragment extends Fragment {
+    private ProductListViewModel productViewModel;
+    private ProductListRecyclerViewAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         productViewModel =
-                ViewModelProviders.of(this).get(ProductViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_product_category, container, false);
-        final RecyclerView recyclerView = root.findViewById(R.id.product_categories);
+                ViewModelProviders.of(this).get(ProductListViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_product_list, container, false);
+        final RecyclerView recyclerView = root.findViewById(R.id.products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ProductRecyclerViewAdapter(getContext());
+        adapter = new ProductListRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
         Bundle bundle = getArguments();
         Log.i("ByungL", "haha " + bundle.getInt("productCategoryId"));

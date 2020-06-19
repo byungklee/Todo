@@ -1,4 +1,4 @@
-package com.example.test.ui.product.category;
+package com.example.test.ui.cart;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test.R;
+import com.example.test.ui.product.category.ProductCategoryRecyclerViewAdapter;
+import com.example.test.ui.product.category.ProductCategoryViewModel;
 
-public class ProductCategoryFragment extends Fragment {
+public class CartFragment extends Fragment {
 
     private static final int COLUMN_COUNT = 2;
 
@@ -25,11 +25,7 @@ public class ProductCategoryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         productViewModel =
                 ViewModelProviders.of(this).get(ProductCategoryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_product_category, container, false);
-        final RecyclerView recyclerView = root.findViewById(R.id.product_categories);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), COLUMN_COUNT));
-        adapter = new ProductCategoryRecyclerViewAdapter(getContext());
-        recyclerView.setAdapter(adapter);
+        View root = inflater.inflate(R.layout.fragment_cart, container, false);
         return root;
     }
 }

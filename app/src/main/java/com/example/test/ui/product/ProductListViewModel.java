@@ -2,5 +2,5 @@ package com.example.test.ui.product;
 
 import androidx.lifecycle.ViewModel;
 
-public class ProductViewModel extends ViewModel {
+public class ProductListViewModel extends ViewModel {
 }

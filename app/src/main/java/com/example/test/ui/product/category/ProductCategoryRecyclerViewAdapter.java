@@ -2,7 +2,6 @@ package com.example.test.ui.product.category;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.test.R;
-import com.example.test.ui.product.ProductActivity;
-import com.example.test.ui.product.ProductFragment;
+import com.example.test.ui.product.ProductListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +87,7 @@ public class ProductCategoryRecyclerViewAdapter
     // Method that executes your code for the action received
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + getItem(position).toString() + ", which is at cell position " + position);
-        Intent intent = new Intent(context, ProductActivity.class);
+        Intent intent = new Intent(context, ProductListActivity.class);
         intent.putExtra("productCategoryId", getItem(position).getProductId());
         context.startActivity(intent);
 //        Fragment productFragment = new ProductFragment();

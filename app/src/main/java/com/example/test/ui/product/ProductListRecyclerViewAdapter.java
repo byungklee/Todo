@@ -1,6 +1,7 @@
 package com.example.test.ui.product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.test.R;
+import com.example.test.ui.product.category.ProductCategory;
+import com.example.test.ui.product.detail.ProductDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRecyclerViewAdapter
-        extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder>{
+public class ProductListRecyclerViewAdapter
+        extends RecyclerView.Adapter<ProductListRecyclerViewAdapter.ViewHolder>{
     private LayoutInflater mInflater;
     private List<Product> products;
     private Context context;
 
-    public ProductRecyclerViewAdapter(final Context context) {
+    public ProductListRecyclerViewAdapter(final Context context) {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         products = new ArrayList<>();
@@ -41,7 +44,7 @@ public class ProductRecyclerViewAdapter
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.product_recycler, parent, false);
-        return new ProductRecyclerViewAdapter.ViewHolder(view);
+        return new ProductListRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
@@ -74,6 +77,26 @@ public class ProductRecyclerViewAdapter
             // if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
             Log.d("ByungL", "Item clicked " + getItemId() + " " + getAdapterPosition());
 //            onItemClick(view, getAdapterPosition());
+            onItemClick(view, getAdapterPosition());
+
         }
+    }
+
+    public Product getItem(int id) {
+        return products.get(id);
+    }
+
+    public void onItemClick(View view, int position) {
+        Log.i("TAG", "You clicked number " + getItem(position).toString() + ", which is at cell position " + position);
+        Intent intent = new Intent(context, ProductDetailActivity.class);
+        intent.putExtra("Z", getItem(position).getProductId());
+        context.startActivity(intent);
+//        Fragment productFragment = new ProductFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("productCategoryId", getItem(position).getProductId());
+//        productFragment.setArguments(bundle);
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        activity.getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.nav_host_fragment, productFragment).addToBackStack(null).commit();
     }
 }
